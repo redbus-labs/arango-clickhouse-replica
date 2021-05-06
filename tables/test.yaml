@@ -1,0 +1,57 @@
+---
+table: |
+  CREATE TABLE Test
+  (
+      `Id`             Int64,
+      `Name`           String,
+      `Email`          String,
+      `Answers`        Array(String),
+      `SubmittedOn`    Nullable(DateTime),
+      `_ver`           UInt64,
+      `_rev`           String,
+      `_deleted`       UInt8
+  ) ENGINE = ReplacingMergeTree(_ver)
+        PRIMARY KEY (Id, Name)
+        ORDER BY (Id, Name)
+        SETTINGS index_granularity = 256
+
+table_name: Test
+
+buffer:
+  num_layers: 1
+  min_time: 15
+  max_time: 30
+  min_rows: 1000
+  max_rows: 2000
+  min_bytes: 10000000
+  max_bytes: 20000000
+
+schema:
+  properties:
+    Id:
+      type: int
+      ref: _key # arango column name
+    Name:
+      type: str
+      ref: name
+      required: true
+    Email:
+      type: str
+      ref: email
+      required: true
+    Answers:
+      type: to_array # custom transform function
+      default: [ ]
+    SubmittedOn:
+      type: from_datetime
+      ref: submitted_on
+    _rev:
+      type: str
+      default: ''
+    _ver:
+      type: int
+      default: 1
+    _deleted:
+      type: int
+      default: 0
+  primary_key: Id

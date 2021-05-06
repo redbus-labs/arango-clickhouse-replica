@@ -1,0 +1,17 @@
+---
+apps:
+  - name: arango-producer
+    max_restarts: 3
+    min_uptime: 20m
+    restart_delay: 300000
+    max_memory_restart: 512M
+    kill_timeout: 90000
+    env:
+      env: prod
+  - name: clickhouse-consumer
+    watch: false
+    autorestart: false
+    max_memory_restart: 512M
+    kill_timeout: 90000
+    env:
+      env: prod

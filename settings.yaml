@@ -1,0 +1,64 @@
+---
+arango:
+  host: arango.service.com
+  port: 8529
+  username: username
+  password: password
+  db: db_name
+
+wal:
+  username: root_username
+  password: root_password
+  db: db_name
+
+clickhouse:
+  host: clickhouse.service.com
+  port: 9000
+  database: db_name
+  user: username
+  password: password
+
+kafka:
+  host: kafka.service.com
+  port: 9092
+
+redis:
+  host: redis.service.com
+  port: 6379
+  db: 0
+
+producer:
+  idle: 10
+  reader_batch: 16384
+  writer_timeout: 10000
+  # provide the list of collections to sync from arango
+  sync: [ ]
+
+consumer:
+  idle: 30
+  min_up_time: 60
+  max_read_fails_allowed: 3
+  restart_delay: 30
+  kafka_poll_time_out: 1000
+  kafka_max_records: 1000
+  # to exclude the the collections from the consumers add the in the exclude list
+  exclude: [ ]
+
+alert:
+  # enable this flag and provide the smtp configurations to receive the alerts
+  enabled: false
+  smtp:
+    host: smtp.gmail.com
+    port: '587'
+    user: username@email.com
+    password:
+  sender: sender@email.com
+  receivers:
+    - receiver@email.com
+
+logs:
+  logs_path: /Users/ajith.a/source_code/arango-ch/UGC/Arango-CH/log
+  # log rotation settings
+  max_bytes: 50000000
+  backup_count: 10
+
