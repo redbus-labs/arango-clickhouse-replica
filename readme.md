@@ -20,7 +20,7 @@ Replica is a tool to replicate the data from ArangoDB to Clickhouse in real-time
 
 ### Installation
 ```shell
-git clone http://ias-01.redbus.in/capi/UGC/-/tree/arango-ch-sync/Arango-CH
+git clone https://github.com/redbus-labs/arango-clickhouse-replica.git
 virtualenv venv
 source venv/bin/activate
 python3 setup.py install
