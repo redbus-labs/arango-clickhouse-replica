@@ -12,7 +12,7 @@ setup(
     packages=['test', 'util', 'alert', 'cache', 'config', 'logger', 'tables', 'arangodb', 'clickhouse', 'replication',
               'replication.schema', 'replication.updater', 'replication.consumer', 'replication.producer',
               'replication.replicator'],
-    url='http://ias-01.redbus.in/capi/UGC/-/tree/open-source/Arango-CH',
+    url='https://github.com/redbus-labs/arango-clickhouse-replica',
     license='',
     author='ajith.a',
     author_email='ajith.a@redbus.com',
